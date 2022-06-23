@@ -2,13 +2,11 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/new", (req, res) => {
-  // show student form
+  res.render("studentForm");
 });
 
 router.post("/", (req, res) => {
-  // capture the data
-  // store into database
-  // send response
+  res.send(req.body);
 });
 
 router.get("/", (req, res) => {
