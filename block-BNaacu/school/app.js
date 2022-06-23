@@ -10,7 +10,7 @@ mongoose.connect("mongodb://localhost/school", (err) => {
 
 const app = express();
 
-app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 // set view engine
 app.set("view engine", "ejs");
