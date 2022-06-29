@@ -28,4 +28,20 @@ router.get("/:id", (req, res, next) => {
   });
 });
 
+router.get("/:id/edit", (req, res, next) => {
+  const id = req.params.id;
+  User.findById(id, (err, user) => {
+    if (err) return next(err);
+    res.render("updateForm", { user });
+  });
+});
+
+router.post("/:id", (req, res, next) => {
+  const id = req.params.id;
+  User.findByIdAndUpdate(id, req.body, (err, updatedUser) => {
+    if (err) return next(err);
+    res.redirect("/users/" + id);
+  });
+});
+
 module.exports = router;
