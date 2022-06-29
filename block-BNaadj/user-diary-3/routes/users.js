@@ -44,4 +44,12 @@ router.post("/:id", (req, res, next) => {
   });
 });
 
+router.get("/:id/delete", (req, res, next) => {
+  const id = req.params.id;
+  User.findByIdAndDelete(id, (err, deletedUser) => {
+    if (err) return next(err);
+    res.redirect("/users");
+  });
+});
+
 module.exports = router;
