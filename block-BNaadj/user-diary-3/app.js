@@ -14,6 +14,14 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use("/users", require("./routes/users"));
 
+app.use((req, res, next) => {
+  res.send("page not found");
+});
+
+app.use((err, req, res, next) => {
+  res.send(err);
+});
+
 app.listen(4000, () => {
   console.log("server is listening on port 4k");
 });
