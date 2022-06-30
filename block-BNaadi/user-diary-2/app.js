@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const logger = require("morgan");
 
 // database connect
 mongoose.connect("mongodb://localhost/user-diary-2", (err) => {
@@ -14,6 +15,7 @@ const app = express();
 //view engine
 app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
+app.use(logger("dev"));
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
