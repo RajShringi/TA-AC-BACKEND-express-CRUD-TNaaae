@@ -35,7 +35,7 @@ router.put("/:id", (req, res, next) => {
   let id = req.params.id;
   User.findByIdAndUpdate(id, req.body, (err, updatedUser) => {
     if (err) return next(err);
-    res.redirect(`/users/${id}`);
+    res.redirect(303, `/users/${id}`);
   });
 });
 
@@ -44,7 +44,7 @@ router.delete("/:id", (req, res, next) => {
   let id = req.params.id;
   User.findByIdAndDelete(id, (err, deletedUser) => {
     if (err) return next(err);
-    res.redirect("/users");
+    res.redirect(303, "/users");
   });
 });
 
